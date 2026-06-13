@@ -4,7 +4,7 @@ import MarketplaceMain from './MarketplaceMain';
 import SidebarFilters from './SidebarFilters';
 import RegisterCtaCard from '@/components/forms/RegisterCtaCard';
 import { useBusinesses, useFavorites, useProducts } from '@/lib/queries';
-import { useMarketplaceFilters } from '@/lib/hooks/useMarketplaceFilters';
+import { useSyncedMarketplaceFilters } from '@/lib/hooks/useMarketplaceFilters';
 
 export default function ProductsView() {
   const {
@@ -14,7 +14,7 @@ export default function ProductsView() {
     setSearchQuery,
     setSelectedCategory,
     setSelectedLocation,
-  } = useMarketplaceFilters({ syncUrl: true });
+  } = useSyncedMarketplaceFilters();
 
   const { data: businesses = [] } = useBusinesses({ status: 'all' });
   const { data: products = [] } = useProducts();

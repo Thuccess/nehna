@@ -9,10 +9,6 @@ import {
   type MarketplaceFilterState,
 } from '@/lib/marketplaceFilters';
 
-interface UseMarketplaceFiltersOptions {
-  syncUrl?: boolean;
-}
-
 function filtersEqual(a: MarketplaceFilterState, b: MarketplaceFilterState): boolean {
   return (
     a.searchQuery === b.searchQuery &&
@@ -21,33 +17,10 @@ function filtersEqual(a: MarketplaceFilterState, b: MarketplaceFilterState): boo
   );
 }
 
-export function useMarketplaceFilters(options: UseMarketplaceFiltersOptions = {}) {
-  const { syncUrl = false } = options;
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const [filters, setFilters] = useState<MarketplaceFilterState>(() =>
-    syncUrl
-      ? parseMarketplaceFiltersFromSearchParams(searchParams)
-      : { searchQuery: '', selectedCategory: '', selectedLocation: '' },
-  );
-
-  // URL → state (back/forward, external links)
-  useEffect(() => {
-    if (!syncUrl) return;
-    const fromUrl = parseMarketplaceFiltersFromSearchParams(searchParams);
-    setFilters((prev) => (filtersEqual(prev, fromUrl) ? prev : fromUrl));
-  }, [syncUrl, searchParams]);
-
-  // state → URL (user filter changes)
-  useEffect(() => {
-    if (!syncUrl) return;
-    const targetQs = buildMarketplaceSearchParams(filters).toString();
-    const currentQs = searchParams.toString();
-    if (targetQs === currentQs) return;
-    router.replace(buildMarketplaceSearchUrl(pathname, filters), { scroll: false });
-  }, [filters, syncUrl, pathname, router, searchParams]);
+function useMarketplaceFilterState(
+  initial: MarketplaceFilterState | (() => MarketplaceFilterState),
+) {
+  const [filters, setFilters] = useState<MarketplaceFilterState>(initial);
 
   const applyPatch = useCallback((patch: Partial<MarketplaceFilterState>) => {
     setFilters((prev) => ({ ...prev, ...patch }));
@@ -74,6 +47,32 @@ export function useMarketplaceFilters(options: UseMarketplaceFiltersOptions = {}
   );
 
   return {
+    filters,
+    setFilters,
+    setSearchQuery,
+    setSelectedCategory,
+    setSelectedLocation,
+    clearFilters,
+    applyFilters: applyPatch,
+  };
+}
+
+/** Local filter state only — safe without a Suspense boundary. */
+export function useMarketplaceFilters() {
+  const {
+    filters,
+    setSearchQuery,
+    setSelectedCategory,
+    setSelectedLocation,
+    clearFilters,
+    applyFilters,
+  } = useMarketplaceFilterState({
+    searchQuery: '',
+    selectedCategory: '',
+    selectedLocation: '',
+  });
+
+  return {
     searchQuery: filters.searchQuery,
     selectedCategory: filters.selectedCategory,
     selectedLocation: filters.selectedLocation,
@@ -81,6 +80,48 @@ export function useMarketplaceFilters(options: UseMarketplaceFiltersOptions = {}
     setSelectedCategory,
     setSelectedLocation,
     clearFilters,
-    applyFilters: applyPatch,
+    applyFilters,
+  };
+}
+
+/** Syncs filters with URL search params — wrap the consumer in Suspense. */
+export function useSyncedMarketplaceFilters() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const {
+    filters,
+    setFilters,
+    setSearchQuery,
+    setSelectedCategory,
+    setSelectedLocation,
+    clearFilters,
+    applyFilters,
+  } = useMarketplaceFilterState(() => parseMarketplaceFiltersFromSearchParams(searchParams));
+
+  // URL → state (back/forward, external links)
+  useEffect(() => {
+    const fromUrl = parseMarketplaceFiltersFromSearchParams(searchParams);
+    setFilters((prev) => (filtersEqual(prev, fromUrl) ? prev : fromUrl));
+  }, [searchParams]);
+
+  // state → URL (user filter changes)
+  useEffect(() => {
+    const targetQs = buildMarketplaceSearchParams(filters).toString();
+    const currentQs = searchParams.toString();
+    if (targetQs === currentQs) return;
+    router.replace(buildMarketplaceSearchUrl(pathname, filters), { scroll: false });
+  }, [filters, pathname, router, searchParams]);
+
+  return {
+    searchQuery: filters.searchQuery,
+    selectedCategory: filters.selectedCategory,
+    selectedLocation: filters.selectedLocation,
+    setSearchQuery,
+    setSelectedCategory,
+    setSelectedLocation,
+    clearFilters,
+    applyFilters,
   };
 }

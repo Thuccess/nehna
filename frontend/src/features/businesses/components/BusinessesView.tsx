@@ -3,7 +3,7 @@
 import BusinessDirectory from '@/features/businesses/components/BusinessDirectory';
 import SidebarFilters from '@/features/products/components/SidebarFilters';
 import RegisterCtaCard from '@/components/forms/RegisterCtaCard';
-import { useMarketplaceFilters } from '@/lib/hooks/useMarketplaceFilters';
+import { useSyncedMarketplaceFilters } from '@/lib/hooks/useMarketplaceFilters';
 import { scrollToMarketplaceResults } from '@/lib/marketplaceFilters';
 
 export default function BusinessesView() {
@@ -14,7 +14,7 @@ export default function BusinessesView() {
     setSearchQuery,
     setSelectedCategory,
     setSelectedLocation,
-  } = useMarketplaceFilters({ syncUrl: true });
+  } = useSyncedMarketplaceFilters();
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
