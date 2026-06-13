@@ -37,6 +37,27 @@ export async function createApp(): Promise<express.Express> {
     res.json({ ok: true, env: env.NODE_ENV });
   });
 
+  app.get('/', (_req, res) => {
+    res.json({
+      name: 'NehnaX API',
+      status: 'running',
+      message:
+        'This is the backend API. Deploy the Next.js app (frontend/) separately and point NEXT_PUBLIC_API_URL to this host.',
+      health: '/health',
+      endpoints: {
+        auth: '/auth',
+        businesses: '/businesses',
+        products: '/products',
+        inquiries: '/inquiries',
+        orders: '/orders',
+        favorites: '/favorites',
+        users: '/users',
+        search: '/search',
+        uploads: '/uploads',
+      },
+    });
+  });
+
   app.use('/auth', authRoutes);
   app.use('/businesses', businessRoutes);
   app.use('/products', productRoutes);
