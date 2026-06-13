@@ -21,6 +21,7 @@ import type {
   RegisterInput,
   SellerRegisterInput,
   SellerRegisterResponse,
+  LoginInput,
   UpdateUserInput,
   User,
 } from '@adulis/shared';
@@ -90,7 +91,7 @@ export const api = {
     apiFetch<AuthResponse>('/auth/register', { method: 'POST', body: input }),
   registerSeller: (input: SellerRegisterInput) =>
     apiFetch<SellerRegisterResponse>('/auth/register/seller', { method: 'POST', body: input }),
-  login: (input: { identifier: string; password: string; intent?: 'buyer' | 'seller' }) =>
+  login: (input: LoginInput) =>
     apiFetch<AuthResponse>('/auth/login', { method: 'POST', body: input }),
   forgotPassword: (email: string) =>
     apiFetch<{ ok: true }>('/auth/forgot-password', { method: 'POST', body: { email } }),
