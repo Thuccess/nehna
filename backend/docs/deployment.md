@@ -1,5 +1,7 @@
 # Deployment
 
+See [environment.md](./environment.md) for **frontend ↔ backend env vars** (Vercel + Render).
+
 See also [backend/README.md](../README.md) for nginx/pm2 details.
 
 ## Architecture
