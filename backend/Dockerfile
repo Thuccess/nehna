@@ -1,14 +1,16 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-COPY shared/package.json shared/
+COPY shared/package.json shared/package-lock.json* shared/
+COPY shared/tsconfig.json shared/
+COPY shared/src shared/src
+COPY tsconfig.base.json ./
 COPY package.json package-lock.json* ./
 
 RUN npm install --prefix shared && npm run build --prefix shared
 RUN npm install
 
-COPY shared shared
-COPY tsconfig.json tsconfig.base.json ./
+COPY tsconfig.json ./
 COPY src src
 
 RUN npm run build
