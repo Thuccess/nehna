@@ -1,0 +1,10 @@
+export type Language = 'en' | 'ti';
+export type UserRole = 'customer' | 'seller' | 'admin';
+export type UserStatus = 'pending' | 'active' | 'banned';
+export type BusinessStatus = 'pending' | 'approved' | 'suspended';
+export type BusinessPackage = 'basic' | 'premium' | 'featured' | 'top_featured';
+export type FavoriteItemType = 'product' | 'business';
+export type InquiryStatus = 'unread' | 'read';
+export type OrderStatus = 'pending' | 'confirmed' | 'fulfilled' | 'cancelled';
+export type MessageSenderRole = 'buyer' | 'seller' | 'admin';
+export type UploadKind = 'logo' | 'cover' | 'product' | 'avatar';

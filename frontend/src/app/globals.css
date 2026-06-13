@@ -1,0 +1,289 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+
+  /* NehnaX logo palette */
+  --color-nehnax-navy-50: #eef0f4;
+  --color-nehnax-navy-100: #dce1e9;
+  --color-nehnax-navy-200: #b9c3d3;
+  --color-nehnax-navy-300: #96a5bd;
+  --color-nehnax-navy-400: #7387a7;
+  --color-nehnax-navy-500: #051326;
+  --color-nehnax-navy-600: #04101f;
+  --color-nehnax-navy-700: #030d19;
+  --color-nehnax-navy-800: #020a14;
+  --color-nehnax-navy-900: #01070f;
+
+  --color-flag-red-50: #fde8e9;
+  --color-flag-red-100: #fccccc;
+  --color-flag-red-200: #f9999f;
+  --color-flag-red-300: #f66677;
+  --color-flag-red-400: #f3334f;
+  --color-flag-red-500: #e30613;
+  --color-flag-red-600: #cc0511;
+  --color-flag-red-700: #b0040f;
+  --color-flag-red-800: #94030c;
+  --color-flag-red-900: #78020a;
+
+  --color-flag-blue-50: #e6f0fa;
+  --color-flag-blue-100: #cce0f5;
+  --color-flag-blue-200: #99c2eb;
+  --color-flag-blue-300: #66a3e0;
+  --color-flag-blue-400: #3385d6;
+  --color-flag-blue-500: #0066cc;
+  --color-flag-blue-600: #005cb8;
+  --color-flag-blue-700: #0055aa;
+  --color-flag-blue-800: #004494;
+  --color-flag-blue-900: #003377;
+
+  --color-flag-green-50: #e6f5eb;
+  --color-flag-green-100: #ccebd6;
+  --color-flag-green-200: #99d7ad;
+  --color-flag-green-300: #66c384;
+  --color-flag-green-400: #33af5b;
+  --color-flag-green-500: #009639;
+  --color-flag-green-600: #008832;
+  --color-flag-green-700: #007a2d;
+  --color-flag-green-800: #006c28;
+  --color-flag-green-900: #005e23;
+
+  --color-flag-gold-50: #fff8e3;
+  --color-flag-gold-100: #fff0c7;
+  --color-flag-gold-200: #ffe9ab;
+  --color-flag-gold-300: #ffd573;
+  --color-flag-gold-400: #ffcb57;
+  --color-flag-gold-500: #ffc20e;
+  --color-flag-gold-600: #f7941d;
+  --color-flag-gold-700: #e0851a;
+  --color-flag-gold-800: #c97617;
+  --color-flag-gold-900: #b36714;
+
+  --color-black: #051326;
+
+  --color-primary-50: var(--color-flag-blue-50);
+  --color-primary-100: var(--color-flag-blue-100);
+  --color-primary-600: var(--color-flag-blue-500);
+  --color-primary-700: var(--color-flag-blue-700);
+
+  /* Remap sky → NehnaX logo blue */
+  --color-sky-50: var(--color-flag-blue-50);
+  --color-sky-100: var(--color-flag-blue-100);
+  --color-sky-200: var(--color-flag-blue-200);
+  --color-sky-300: var(--color-flag-blue-300);
+  --color-sky-400: var(--color-flag-blue-400);
+  --color-sky-500: var(--color-flag-blue-500);
+  --color-sky-600: var(--color-flag-blue-600);
+  --color-sky-700: var(--color-flag-blue-700);
+  --color-sky-800: var(--color-flag-blue-800);
+  --color-sky-900: var(--color-flag-blue-900);
+  --color-sky-950: var(--color-flag-blue-900);
+
+  /* Remap emerald → NehnaX logo green */
+  --color-emerald-50: var(--color-flag-green-50);
+  --color-emerald-100: var(--color-flag-green-100);
+  --color-emerald-200: var(--color-flag-green-200);
+  --color-emerald-300: var(--color-flag-green-300);
+  --color-emerald-400: var(--color-flag-green-400);
+  --color-emerald-500: var(--color-flag-green-500);
+  --color-emerald-600: var(--color-flag-green-600);
+  --color-emerald-700: var(--color-flag-green-700);
+  --color-emerald-800: var(--color-flag-green-800);
+  --color-emerald-900: var(--color-flag-green-900);
+  --color-emerald-950: var(--color-flag-green-900);
+
+  /* Remap amber → NehnaX logo gold/orange */
+  --color-amber-50: var(--color-flag-gold-50);
+  --color-amber-100: var(--color-flag-gold-100);
+  --color-amber-200: var(--color-flag-gold-200);
+  --color-amber-300: var(--color-flag-gold-300);
+  --color-amber-400: var(--color-flag-gold-400);
+  --color-amber-500: var(--color-flag-gold-500);
+  --color-amber-600: var(--color-flag-gold-600);
+  --color-amber-700: var(--color-flag-gold-700);
+  --color-amber-800: var(--color-flag-gold-800);
+  --color-amber-900: var(--color-flag-gold-900);
+  --color-amber-950: var(--color-flag-gold-900);
+
+  --color-border: rgba(5, 19, 38, 0.1);
+}
+
+html,
+body {
+  background-color: #ffffff;
+  color: #051326;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+::selection {
+  background: rgba(0, 102, 204, 0.25);
+  color: #0055aa;
+}
+
+:root {
+  --mobile-nav-height: 4.5rem;
+  --mobile-sticky-cta-height: 3.25rem;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --mobile-bottom-clearance: calc(var(--mobile-nav-height) + var(--safe-bottom));
+  --mobile-sticky-stack: calc(var(--mobile-bottom-clearance) + var(--mobile-sticky-cta-height));
+  --mobile-header-offset: calc(4.5rem + var(--safe-top));
+}
+
+@media (min-width: 48rem) {
+  .pb-mobile-nav {
+    padding-bottom: 0;
+  }
+
+  .bottom-mobile-nav {
+    bottom: auto;
+  }
+}
+
+@media (max-width: 47.9375rem) {
+  .pb-mobile-nav {
+    padding-bottom: var(--mobile-bottom-clearance);
+  }
+
+  .bottom-mobile-nav {
+    bottom: var(--mobile-bottom-clearance);
+  }
+
+  .pb-mobile-sticky-stack {
+    padding-bottom: var(--mobile-sticky-stack);
+  }
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* Unified icon stroke for lucide across the app */
+.app-icon {
+  stroke-width: 2.25;
+  flex-shrink: 0;
+}
+
+.app-icon-sm {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.app-icon-md {
+  width: 1rem;
+  height: 1rem;
+}
+
+.app-icon-lg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    transition: color, background-color, border-color, transform, box-shadow 150ms ease;
+    touch-action: manipulation;
+  }
+
+  .btn:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  .btn:disabled {
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .btn-primary {
+    background-color: var(--color-flag-red-600);
+    color: white;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 2px rgba(204, 5, 17, 0.2);
+    border-radius: 0.75rem;
+    min-height: 2.75rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--color-flag-red-500);
+  }
+
+  .btn-secondary {
+    background-color: var(--color-flag-blue-600);
+    color: white;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 2px rgba(0, 92, 184, 0.15);
+    border-radius: 0.75rem;
+    min-height: 2.75rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background-color: var(--color-flag-blue-500);
+  }
+
+  .btn-outline {
+    background-color: white;
+    color: var(--color-black);
+    border: 1px solid rgba(5, 19, 38, 0.12);
+    border-radius: 0.75rem;
+    min-height: 2.75rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-outline:hover:not(:disabled) {
+    background-color: rgba(5, 19, 38, 0.05);
+  }
+
+  .btn-sm {
+    min-height: 2.25rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+  }
+
+  .btn-success {
+    background-color: var(--color-flag-green-600);
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 0.75rem;
+    min-height: 2.75rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .btn-success:hover:not(:disabled) {
+    background-color: var(--color-flag-green-500);
+  }
+}
