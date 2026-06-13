@@ -10,7 +10,7 @@ interface AuthContextValue {
   login: (
     identifier: string,
     password: string,
-    intent?: 'buyer' | 'seller',
+    intent?: 'buyer' | 'seller' | 'admin',
   ) => Promise<User>;
   register: (input: RegisterInput) => Promise<User>;
   registerSeller: (input: SellerRegisterInput) => Promise<{ user: User; businessId: string }>;
@@ -42,7 +42,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [refresh]);
 
   const login = useCallback(
-    async (identifier: string, password: string, intent?: 'buyer' | 'seller') => {
+    async (identifier: string, password: string, intent?: 'buyer' | 'seller' | 'admin') => {
       const res = await api.login({ identifier, password, intent });
       setUser(res.user);
       return res.user;

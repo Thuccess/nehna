@@ -1,4 +1,3 @@
-import Breadcrumb from '@/components/layout/Breadcrumb';
 import AdminView from '@/features/admin/components/AdminView';
 
 export const metadata = {
@@ -6,10 +5,5 @@ export const metadata = {
 };
 
 export default function AdminProductsPage() {
-  return (
-    <>
-      <Breadcrumb segments={[{ label: 'admin' }, { label: 'products' }]} />
-      <AdminView initialTab="listings" />
-    </>
-  );
+  return <AdminView initialTab="listings" />;
 }

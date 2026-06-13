@@ -108,6 +108,9 @@ export const authService = {
     const ok = await bcrypt.compare(input.password, doc.passwordHash);
     if (!ok) throw new HttpError(401, 'Invalid credentials');
 
+    if (input.intent === 'admin' && doc.role !== 'admin') {
+      throw new HttpError(403, 'Administrator access only.');
+    }
     if (input.intent === 'buyer' && doc.role !== 'customer') {
       if (doc.role === 'admin') {
         // allow admin on buyer login for convenience

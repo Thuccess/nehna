@@ -38,7 +38,7 @@ export type RegisterInput = z.infer<typeof registerInputSchema>;
 export const loginInputSchema = z.object({
   identifier: z.string().trim().min(3).max(200),
   password: z.string().min(1),
-  intent: z.enum(['buyer', 'seller']).optional(),
+  intent: z.enum(['buyer', 'seller', 'admin']).optional(),
 });
 export type LoginInput = z.infer<typeof loginInputSchema>;
 

@@ -148,9 +148,6 @@ export default function Footer() {
 
               <FooterColumn title={language === 'en' ? 'Trust' : 'እምነት'}>
                 <li>
-                  <FooterLink href="/admin" icon={Shield}>{t.navAdmin}</FooterLink>
-                </li>
-                <li>
                   <button
                     type="button"
                     onClick={toggleLanguage}
