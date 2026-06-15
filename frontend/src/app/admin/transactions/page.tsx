@@ -1,7 +1,7 @@
 import MyOrdersView from '@/features/dashboard/components/MyOrdersView';
 
 export const metadata = {
-  title: 'Transactions — NehnaX Admin',
+  title: 'Transactions — Nehna Admin',
 };
 
 export default function AdminTransactionsPage() {

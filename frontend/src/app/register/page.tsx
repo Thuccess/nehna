@@ -2,7 +2,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb';
 import RegisterChoiceView from '@/features/auth/components/RegisterChoiceView';
 
 export const metadata = {
-  title: 'Create Account — NehnaX',
+  title: 'Create Account — Nehna',
 };
 
 export default function RegisterPage() {

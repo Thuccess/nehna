@@ -34,12 +34,12 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'NehnaX — Buy. Sell. Connect. | Eritrean Marketplace Kampala',
+  title: 'Nehna — Buy. Sell. Connect. | Eritrean Marketplace Kampala',
   description:
     'Premium community marketplace and business directory for the Eritrean community in Kampala, Uganda.',
   icons: {
-    icon: '/nehnax-logo.png',
-    apple: '/nehnax-logo.png',
+    icon: '/nehna-logo.png',
+    apple: '/nehna-logo.png',
   },
 };
 

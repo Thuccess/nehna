@@ -17,7 +17,7 @@ const sizeMap: Record<NonNullable<VerifiedBadgeProps['size']>, string> = {
 export default function VerifiedBadge({
   size = 'sm',
   className = '',
-  title = 'Verified by NehnaX admin',
+  title = 'Verified by Nehna admin',
 }: VerifiedBadgeProps) {
   return (
     <span

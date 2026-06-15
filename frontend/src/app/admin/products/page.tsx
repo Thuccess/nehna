@@ -1,7 +1,7 @@
 import AdminView from '@/features/admin/components/AdminView';
 
 export const metadata = {
-  title: 'Admin Listings — NehnaX',
+  title: 'Admin Listings — Nehna',
 };
 
 export default function AdminProductsPage() {

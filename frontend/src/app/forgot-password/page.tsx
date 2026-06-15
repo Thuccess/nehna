@@ -2,7 +2,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb';
 import ForgotPasswordView from '@/features/auth/components/ForgotPasswordView';
 
 export const metadata = {
-  title: 'Forgot Password — NehnaX',
+  title: 'Forgot Password — Nehna',
 };
 
 export default function ForgotPasswordPage() {

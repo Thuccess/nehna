@@ -3,7 +3,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb';
 import BusinessesView from '@/features/businesses/components/BusinessesView';
 
 export const metadata = {
-  title: 'Businesses — NehnaX Kampala Directory',
+  title: 'Businesses — Nehna Kampala Directory',
 };
 
 export default function BusinessesPage() {

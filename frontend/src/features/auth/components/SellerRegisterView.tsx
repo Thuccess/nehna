@@ -122,7 +122,7 @@ export default function SellerRegisterView() {
     <div className="max-w-md mx-auto bg-slate-50 border border-black/10 rounded-3xl shadow-2xl overflow-hidden">
       <div className="bg-white p-6 border-b border-black/10">
         <div className="flex justify-center mb-3">
-          <NehnaXLogo linkToHome className="max-w-[160px]" />
+          <NehnaXLogo linkToHome size="lg" />
         </div>
         <p className="text-[10px] font-mono font-bold uppercase text-black/50">
           {language === 'en' ? 'Seller registration' : 'መዝገብ ሸያጢ'} — Step {stepIndex + 1}/4

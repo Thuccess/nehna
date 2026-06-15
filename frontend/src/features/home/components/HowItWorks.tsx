@@ -50,7 +50,7 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-8">
           <span className="inline-flex items-center gap-1.5 bg-black/5 text-black/65 border border-black/10 px-3 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-widest">
-            {language === 'en' ? 'How NehnaX works' : 'NehnaX ከመይ ይሰርሕ'}
+            {language === 'en' ? 'How Nehna works' : 'Nehna ከመይ ይሰርሕ'}
           </span>
           <h2 className="text-2xl md:text-3xl font-serif font-black text-black tracking-tight mt-3">
             {language === 'en'

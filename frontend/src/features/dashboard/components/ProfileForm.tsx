@@ -54,7 +54,7 @@ export default function ProfileForm() {
         </h2>
         <p className="text-xs text-black/60 mt-1">
           {language === 'en'
-            ? 'Update your name, phone, and profile picture. Email and role are managed by NehnaX.'
+            ? 'Update your name, phone, and profile picture. Email and role are managed by Nehna.'
             : 'ስም፣ ስልኪ፣ ስእሊ ኣዕቅብ።'}
         </p>
       </div>

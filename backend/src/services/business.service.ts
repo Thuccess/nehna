@@ -27,7 +27,7 @@ function toBusinessInput(
   const onboarding = input as BusinessOnboardingInput;
   const description =
     onboarding.description?.trim() ||
-    `${onboarding.name} on NehnaX — connect with customers in Kampala.`;
+    `${onboarding.name} on Nehna — connect with customers in Kampala.`;
   return {
     name: onboarding.name,
     ownerName,

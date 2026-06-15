@@ -128,7 +128,7 @@ export default function SellerOnboardingView() {
     <div className="max-w-md mx-auto bg-slate-50 border border-black/10 rounded-3xl shadow-2xl overflow-hidden">
       <div className="bg-white p-6 border-b border-black/10">
         <div className="flex justify-center mb-3">
-          <NehnaXLogo linkToHome className="max-w-[160px]" />
+          <NehnaXLogo linkToHome size="lg" />
         </div>
         <div className="flex items-center gap-2 text-[10px] font-mono font-bold uppercase text-black/50 mb-2">
           <Building2 className="h-3.5 w-3.5" />

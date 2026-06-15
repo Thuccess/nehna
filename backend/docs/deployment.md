@@ -9,7 +9,7 @@ See also [backend/README.md](../README.md) for nginx/pm2 details.
 | **Frontend** (Next.js) | Vercel | Your public website URL |
 | **Backend** (Express API) | Render / VPS | API only — not the homepage |
 
-`https://nehna.onrender.com` is the **API**. Visiting it in a browser will not show the NehnaX marketplace UI unless you deploy the frontend separately.
+`https://nehna.onrender.com` is the **API**. Visiting it in a browser will not show the Nehna marketplace UI unless you deploy the frontend separately.
 
 ## Connect Vercel frontend + Render API
 

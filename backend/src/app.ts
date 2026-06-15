@@ -18,6 +18,7 @@ import favoriteRoutes from './routes/favorites.routes.js';
 import userRoutes from './routes/users.routes.js';
 import searchRoutes from './routes/search.routes.js';
 import uploadsRoutes from './routes/uploads.routes.js';
+import connectRoutes from './routes/connect.routes.js';
 
 export async function createApp(): Promise<express.Express> {
   await ensureIndexes();
@@ -39,7 +40,7 @@ export async function createApp(): Promise<express.Express> {
 
   app.get('/', (_req, res) => {
     res.json({
-      name: 'NehnaX API',
+      name: 'Nehna API',
       status: 'running',
       message:
         'This is the backend API. Deploy the Next.js app (frontend/) separately and point NEXT_PUBLIC_API_URL to this host.',
@@ -54,6 +55,7 @@ export async function createApp(): Promise<express.Express> {
         users: '/users',
         search: '/search',
         uploads: '/uploads',
+        connect: '/connect',
       },
     });
   });
@@ -67,6 +69,7 @@ export async function createApp(): Promise<express.Express> {
   app.use('/users', userRoutes);
   app.use('/search', searchRoutes);
   app.use('/uploads', uploadsRoutes);
+  app.use('/connect', connectRoutes);
 
   app.use(notFoundHandler);
   app.use(errorHandler);

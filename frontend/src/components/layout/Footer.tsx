@@ -89,10 +89,7 @@ export default function Footer() {
             {/* Brand */}
             <div className="lg:col-span-5 space-y-5">
               <div className="space-y-3">
-                <NehnaXLogo className="max-w-[180px] brightness-0 invert" />
-                <p className="text-sm font-serif font-bold text-white tracking-tight">
-                  {t.tagline}
-                </p>
+                <NehnaXLogo variant="light" size="lg" />
               </div>
 
               <p className="text-sm text-white/60 leading-relaxed max-w-md">
@@ -188,7 +185,7 @@ export default function Footer() {
                   </div>
                   <div>
                     <p className="text-sm font-extrabold text-white">
-                      {language === 'en' ? 'Sell on NehnaX' : 'ኣብ NehnaX ሸያጥ'}
+                      {language === 'en' ? 'Sell on Nehna' : 'ኣብ Nehna ሸያጥ'}
                     </p>
                     <p className="text-xs text-white/55 mt-1 leading-relaxed">
                       {language === 'en'

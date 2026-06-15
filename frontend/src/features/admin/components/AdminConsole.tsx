@@ -34,8 +34,9 @@ import {
 } from '@/lib/queries';
 import UserName from '@/components/users/UserName';
 import StatusPill from '@/components/users/StatusPill';
+import AdminConnectPanel from './AdminConnectPanel';
 
-type AdminTab = 'overview' | 'approvals' | 'userApprovals' | 'users' | 'listings' | 'plans';
+type AdminTab = 'overview' | 'approvals' | 'userApprovals' | 'users' | 'listings' | 'connect' | 'plans';
 
 interface AdminConsoleProps {
   users: User[];
@@ -327,6 +328,7 @@ export default function AdminConsole({
               },
               { id: 'users', label: language === 'en' ? 'Accounts' : 'ኣካውንታት', Icon: Users },
               { id: 'listings', label: language === 'en' ? 'Listings' : 'ኣቑሑት', Icon: Package },
+              { id: 'connect', label: language === 'en' ? 'Connect' : 'ርክብ', Icon: Bell },
               { id: 'plans', label: language === 'en' ? 'Plans' : 'ክፍሊት', Icon: CreditCard },
             ] as const
           ).map((tab) => (
@@ -586,7 +588,7 @@ export default function AdminConsole({
               </h3>
               <p className="text-xs text-black/60 mt-1 font-sans">
                 {language === 'en'
-                  ? 'Approve newly registered users so they can message sellers, save favorites, or list businesses. Approved users get a verified badge next to their last name everywhere on NehnaX.'
+                  ? 'Approve newly registered users so they can message sellers, save favorites, or list businesses. Approved users get a verified badge next to their last name everywhere on Nehna.'
                   : 'ሓደሽቲ ዝተመዝገቡ ተጠቀምቲ ኣጽድቕ — ምስ ዝጸድቑ ምልክት ምርግጋጽ ይወሃቦም።'}
               </p>
             </div>
@@ -1213,6 +1215,12 @@ export default function AdminConsole({
               })}
             </div>
           )}
+        </div>
+      )}
+
+      {activeTab === 'connect' && (
+        <div className="bg-white border border-black/10 p-6 sm:p-8 rounded-3xl shadow-sm" id="admin-tab-connect">
+          <AdminConnectPanel />
         </div>
       )}
 

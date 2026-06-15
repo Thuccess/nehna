@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import {
   Plus,
@@ -21,6 +22,8 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import type { Business, BusinessPackage, Inquiry, Product, User } from '@adulis/shared';
+import { CATEGORIES, CATEGORY_TRANSLATION_KEYS } from '@adulis/shared/constants';
+import { api } from '@/lib/api';
 import { useLanguage } from '@/providers/LanguageProvider';
 import { useToast } from '@/lib/toast';
 import {
@@ -33,7 +36,6 @@ import ImageUploadField from '@/components/forms/ImageUploadField';
 import UserName from '@/components/users/UserName';
 import StatusPill from '@/components/users/StatusPill';
 import { isPending } from '@/lib/userStatus';
-import Link from 'next/link';
 
 interface SellersHubProps {
   currentUser: User;
@@ -73,15 +75,21 @@ export default function SellersHub({
   const [bizForm, setBizForm] = useState({
     name: currentBiz?.name || '',
     description: currentBiz?.description || '',
-    category: currentBiz?.category || 'Food',
+    category: currentBiz?.category || 'Electronics',
     address: currentBiz?.address || '',
     neighborhood: currentBiz?.neighborhood || 'Kansanga',
     phone: currentBiz?.phone || '',
     whatsAppNumber: currentBiz?.whatsAppNumber || '',
     logo: currentBiz?.logo || '',
     coverImage: currentBiz?.coverImage || '',
+    openingHours: currentBiz?.openingHours || '',
+    mapsUrl: currentBiz?.mapsUrl || '',
     package: (currentBiz?.package || 'basic') as BusinessPackage,
   });
+
+  const [communityBody, setCommunityBody] = useState('');
+  const [communityTitle, setCommunityTitle] = useState('');
+  const [postingCommunity, setPostingCommunity] = useState(false);
 
   useEffect(() => {
     if (!currentBiz) return;
@@ -95,6 +103,8 @@ export default function SellersHub({
       whatsAppNumber: currentBiz.whatsAppNumber,
       logo: currentBiz.logo,
       coverImage: currentBiz.coverImage,
+      openingHours: currentBiz.openingHours ?? '',
+      mapsUrl: currentBiz.mapsUrl ?? '',
       package: currentBiz.package,
     });
   }, [currentBiz?.id, currentBiz]);
@@ -258,7 +268,7 @@ export default function SellersHub({
         <p className="text-black/65 text-sm mb-6 leading-relaxed max-w-md mx-auto">
           {language === 'en'
             ? "You're verified — now publish a business profile so customers can find you and start sending inquiries."
-            : 'ድኳንካ ኣብ NehnaX ኣመዝግብ።'}
+            : 'ድኳንካ ኣብ Nehna ኣመዝግብ።'}
         </p>
         <div className="bg-black/5 border border-black/10 p-3 rounded-2xl inline-flex items-center gap-2 text-xs font-mono text-black/60">
           <span>{language === 'en' ? 'Role:' : 'ሓላፍነት:'}</span>
@@ -444,10 +454,19 @@ export default function SellersHub({
         <div className={`${showProductsSection && (showBusinessSection || showInquiriesSection) ? 'lg:col-span-5' : 'lg:col-span-12'} space-y-8`}>
           {showBusinessSection && (
           <div className="bg-white border border-black/10 text-black p-6 sm:p-8 rounded-3xl shadow-sm relative overflow-hidden">
-            <h3 className="text-sm font-bold font-serif text-sky-700 uppercase tracking-widest mb-6 border-b border-black/10 pb-3 flex items-center gap-2">
+            <h3 className="text-sm font-bold font-serif text-sky-700 uppercase tracking-widest mb-2 border-b border-black/10 pb-3 flex items-center gap-2">
               <Building className="h-4 w-4" />
               <span>{language === 'en' ? 'Manage Business Profile' : 'ገጽ ንግዲ ኣማሓድር'}</span>
             </h3>
+            {currentBiz && (
+              <Link
+                href={`/businesses/${currentBiz.id}`}
+                className="text-xs font-bold text-sky-600 hover:underline mb-4 inline-flex items-center gap-1"
+              >
+                <ArrowUpRight className="h-3.5 w-3.5" />
+                {language === 'en' ? 'View public page' : 'ወጻኢ ገጽ ርአ'}
+              </Link>
+            )}
 
             <form onSubmit={handleUpdateBizSub} className="space-y-5 text-xs font-sans">
               <div className="space-y-1.5">
@@ -481,19 +500,16 @@ export default function SellersHub({
                   <label className="block text-black/55 font-mono text-[10px] uppercase font-bold tracking-wide">
                     Category
                   </label>
-                  <select
+                    <select
                     value={bizForm.category}
                     onChange={(e) => setBizForm({ ...bizForm, category: e.target.value })}
                     className="w-full px-3 py-3 bg-white/95 border border-black/10 text-black rounded-2xl focus:border-sky-500/55 focus:outline-none font-sans cursor-pointer"
                   >
-                    <option value="Food">Food & Cafes</option>
-                    <option value="Groceries">Groceries</option>
-                    <option value="Housing">Housing & Rooms</option>
-                    <option value="Jobs">Jobs & Gigs</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Fashion">Fashion & Wear</option>
-                    <option value="Beauty">Beauty & Salons</option>
-                    <option value="Services">Professional Services</option>
+                    {CATEGORIES.map((cat) => (
+                      <option key={cat} value={cat}>
+                        {t[CATEGORY_TRANSLATION_KEYS[cat]]}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -561,6 +577,33 @@ export default function SellersHub({
                 </div>
               </div>
 
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="block text-black/55 font-mono text-[10px] uppercase font-bold tracking-wide">
+                    {language === 'en' ? 'Opening hours' : 'ሰዓት ክፍትሒ'}
+                  </label>
+                  <textarea
+                    value={bizForm.openingHours}
+                    onChange={(e) => setBizForm({ ...bizForm, openingHours: e.target.value })}
+                    rows={3}
+                    placeholder="Mon–Fri 9am–6pm"
+                    className="w-full px-3 py-3 bg-white/85 border border-black/10 text-black rounded-2xl text-xs"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label className="block text-black/55 font-mono text-[10px] uppercase font-bold tracking-wide">
+                    Google Maps URL
+                  </label>
+                  <input
+                    type="url"
+                    value={bizForm.mapsUrl}
+                    onChange={(e) => setBizForm({ ...bizForm, mapsUrl: e.target.value })}
+                    placeholder="https://maps.google.com/..."
+                    className="w-full px-3 py-3 bg-white/85 border border-black/10 text-black rounded-2xl text-xs"
+                  />
+                </div>
+              </div>
+
               <div className="space-y-4 pt-2 border-t border-black/5">
                 <span className="block text-[10px] font-mono uppercase text-black/55 tracking-widest font-bold">
                   Aesthetic Identity Logos
@@ -619,6 +662,51 @@ export default function SellersHub({
                 {t.saveBtn}
               </button>
             </form>
+
+            <div className="mt-8 pt-6 border-t border-black/10 space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-black/60">
+                {language === 'en' ? 'Community post' : 'ማሕበረሰባዊ ልጥፊ'}
+              </h4>
+              <input
+                type="text"
+                value={communityTitle}
+                onChange={(e) => setCommunityTitle(e.target.value)}
+                placeholder={language === 'en' ? 'Optional title' : 'ኣርእስቲ'}
+                className="w-full px-3 py-2 border border-black/10 rounded-xl text-xs"
+              />
+              <textarea
+                value={communityBody}
+                onChange={(e) => setCommunityBody(e.target.value)}
+                rows={3}
+                placeholder={language === 'en' ? 'Share an update with the community…' : 'ልጥፊ…'}
+                className="w-full px-3 py-2 border border-black/10 rounded-xl text-xs"
+              />
+              <button
+                type="button"
+                disabled={!communityBody.trim() || postingCommunity || !currentBiz}
+                onClick={async () => {
+                  if (!currentBiz) return;
+                  setPostingCommunity(true);
+                  try {
+                    await api.createCommunityPost({
+                      businessId: currentBiz.id,
+                      title: communityTitle.trim() || undefined,
+                      body: communityBody.trim(),
+                    });
+                    setCommunityBody('');
+                    setCommunityTitle('');
+                    toast(language === 'en' ? 'Posted to Connect.' : 'ተመዝጊቡ።', 'success');
+                  } catch {
+                    toast('Failed to post.', 'error');
+                  } finally {
+                    setPostingCommunity(false);
+                  }
+                }}
+                className="w-full py-2.5 bg-sky-600 text-white rounded-xl text-xs font-bold disabled:opacity-50"
+              >
+                {language === 'en' ? 'Post to Connect' : 'ኣብ Connect ሰዲድ'}
+              </button>
+            </div>
           </div>
           )}
 

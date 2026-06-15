@@ -1,17 +1,9 @@
 import type { Business, Product } from '@adulis/shared';
+import { CATEGORIES, normalizeCategory, type Category } from '@adulis/shared/constants';
 
-export const MARKETPLACE_CATEGORIES = [
-  'Food',
-  'Groceries',
-  'Housing',
-  'Jobs',
-  'Electronics',
-  'Fashion',
-  'Beauty',
-  'Services',
-] as const;
+export const MARKETPLACE_CATEGORIES = CATEGORIES;
 
-export type MarketplaceCategory = (typeof MARKETPLACE_CATEGORIES)[number];
+export type MarketplaceCategory = Category;
 
 export const MARKETPLACE_NEIGHBORHOODS = [
   'Kansanga',
@@ -22,16 +14,18 @@ export const MARKETPLACE_NEIGHBORHOODS = [
   'Soya',
 ] as const;
 
-/** Maps common search terms (from placeholder) to marketplace categories. */
+/** Maps common search terms to marketplace categories. */
 export const CATEGORY_SEARCH_SYNONYMS: Record<MarketplaceCategory, string[]> = {
-  Food: ['injera', 'food', 'cafe', 'cafes', 'coffee', 'restaurant', 'dining', 'habesha'],
-  Groceries: ['grocery', 'groceries', 'berbere', 'spice', 'shiro'],
-  Housing: ['apartment', 'apartments', 'room', 'rooms', 'rent', 'housing', 'studio', 'flat'],
-  Jobs: ['job', 'jobs', 'gig', 'gigs', 'work', 'employment'],
-  Electronics: ['phone', 'phones', 'mobile', 'laptop', 'electronics', 'tablet', 'charger'],
+  Electronics: ['phone', 'phones', 'mobile', 'laptop', 'electronics', 'tablet', 'charger', 'tv'],
+  Schools: ['school', 'schools', 'education', 'tuition', 'academy', 'kindergarten'],
+  Travel: ['travel', 'tour', 'flight', 'ticket', 'visa', 'agency'],
+  Rentals: ['apartment', 'rent', 'rental', 'housing', 'room', 'rooms', 'studio', 'flat'],
+  Hotels: ['hotel', 'hotels', 'lodging', 'guesthouse', 'bnb'],
   Fashion: ['fashion', 'dress', 'clothes', 'zuria', 'tailor', 'wear'],
-  Beauty: ['barber', 'barbers', 'salon', 'salons', 'hair', 'beauty', 'spa'],
-  Services: ['service', 'services', 'transport', 'driver', 'delivery'],
+  Beauty: ['barber', 'salon', 'hair', 'beauty', 'spa', 'nails'],
+  Services: ['service', 'services', 'transport', 'driver', 'delivery', 'professional'],
+  Jobs: ['job', 'jobs', 'gig', 'gigs', 'work', 'employment'],
+  Restaurants: ['food', 'cafe', 'restaurant', 'injera', 'habesha', 'dining', 'groceries', 'grocery'],
 };
 
 export interface MarketplaceFilterState {
@@ -61,9 +55,10 @@ export function buildMarketplaceSearchUrl(
 export function parseMarketplaceFiltersFromSearchParams(
   sp: URLSearchParams,
 ): MarketplaceFilterState {
+  const rawCategory = sp.get('category') ?? '';
   return {
     searchQuery: sp.get('q') ?? '',
-    selectedCategory: sp.get('category') ?? '',
+    selectedCategory: rawCategory ? normalizeCategory(rawCategory) : '',
     selectedLocation: sp.get('neighborhood') ?? '',
   };
 }
@@ -140,6 +135,18 @@ export function businessMatchesSearch(business: Business, searchQuery: string): 
   return textMatchesSearchTerms(blob, terms);
 }
 
+function categoryMatches(
+  productCategory: string,
+  businessCategory: string,
+  filterCategory: string,
+): boolean {
+  const normalizedFilter = normalizeCategory(filterCategory);
+  return (
+    normalizeCategory(productCategory) === normalizedFilter ||
+    normalizeCategory(businessCategory) === normalizedFilter
+  );
+}
+
 export function filterMarketplaceProducts(
   products: Product[],
   businesses: Business[],
@@ -152,8 +159,9 @@ export function filterMarketplaceProducts(
     if (!productMatchesSearch(prod, biz, filters.searchQuery)) return false;
 
     if (filters.selectedCategory) {
-      const category = filters.selectedCategory;
-      if (prod.category !== category && biz.category !== category) return false;
+      if (!categoryMatches(prod.category, biz.category, filters.selectedCategory)) {
+        return false;
+      }
     }
 
     if (filters.selectedLocation && biz.neighborhood !== filters.selectedLocation) {
@@ -171,7 +179,12 @@ export function filterMarketplaceBusinesses(
   return businesses.filter((biz) => {
     if (biz.status !== 'approved') return false;
     if (!businessMatchesSearch(biz, filters.searchQuery)) return false;
-    if (filters.selectedCategory && biz.category !== filters.selectedCategory) return false;
+    if (
+      filters.selectedCategory &&
+      normalizeCategory(biz.category) !== normalizeCategory(filters.selectedCategory)
+    ) {
+      return false;
+    }
     if (filters.selectedLocation && biz.neighborhood !== filters.selectedLocation) {
       return false;
     }

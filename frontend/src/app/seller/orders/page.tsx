@@ -2,7 +2,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb';
 import SellerOrdersPanel from '@/features/seller/components/SellerOrdersPanel';
 
 export const metadata = {
-  title: 'Seller Orders — NehnaX Marketplace',
+  title: 'Seller Orders — Nehna Marketplace',
 };
 
 export default function SellerOrdersPage() {

@@ -6,6 +6,7 @@ import MobileBottomNav from './MobileBottomNav';
 import MobileMoreSheet from './MobileMoreSheet';
 import CartSheet from '@/components/cart/CartSheet';
 import PendingBanner from './PendingBanner';
+import WhatsAppSupportButton from './WhatsAppSupportButton';
 import { MobileMoreProvider } from '@/providers/MobileMoreProvider';
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
@@ -19,6 +20,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         <MobileBottomNav />
         <MobileMoreSheet />
         <CartSheet />
+        <WhatsAppSupportButton />
       </div>
     </MobileMoreProvider>
   );

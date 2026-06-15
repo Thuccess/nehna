@@ -30,6 +30,8 @@ const businessSchema = new Schema(
     },
     mapsUrl: { type: String },
     features: { type: [String], default: [] },
+    galleryImages: { type: [String], default: [] },
+    openingHours: { type: String, default: '' },
     createdAt: { type: String, required: true },
   },
   { _id: false, timestamps: { createdAt: false, updatedAt: true } },

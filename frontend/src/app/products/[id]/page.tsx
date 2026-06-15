@@ -2,7 +2,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb';
 import ProductDetail from '@/features/products/components/ProductDetail';
 
 export const metadata = {
-  title: 'Product — NehnaX Marketplace',
+  title: 'Product — Nehna Marketplace',
 };
 
 export default async function ProductDetailPage({

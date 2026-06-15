@@ -16,6 +16,7 @@ import {
   Shield,
   ShoppingBag,
   Store,
+  MessageCircle,
 } from 'lucide-react';
 import { useLanguage } from '@/providers/LanguageProvider';
 import { useAuth } from '@/providers/AuthProvider';
@@ -51,6 +52,7 @@ export default function Navbar() {
     { href: '/', label: t.navHome, Icon: Home },
     { href: '/businesses', label: t.navBusinesses, Icon: Store },
     { href: '/products', label: t.navProducts, Icon: Package },
+    { href: '/connect', label: t.navConnect, Icon: MessageCircle },
     { href: '/favorites', label: t.navFavorites, Icon: Heart },
   ];
 
@@ -64,7 +66,7 @@ export default function Navbar() {
       id="main-navigation-bar"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-3">
-        <NehnaXLogo linkToHome priority />
+        <NehnaXLogo linkToHome priority size="sm" />
 
         <nav className="hidden md:flex items-center gap-1 text-xs font-semibold">
           {navItems.map((item) => (

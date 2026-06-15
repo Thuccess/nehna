@@ -1,4 +1,4 @@
-# NehnaX — Eritrean Marketplace, Kampala
+# Nehna — Eritrean Marketplace, Kampala
 
 Two standalone apps — **no root `package.json` or workspace**. Install and run each folder separately.
 

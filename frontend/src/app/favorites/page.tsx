@@ -2,7 +2,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb';
 import FavoritesView from '@/features/favorites/components/FavoritesView';
 
 export const metadata = {
-  title: 'Favorites — NehnaX Marketplace',
+  title: 'Favorites — Nehna Marketplace',
 };
 
 export default function FavoritesPage() {

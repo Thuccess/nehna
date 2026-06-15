@@ -2,7 +2,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb';
 import SellerRegisterView from '@/features/auth/components/SellerRegisterView';
 
 export const metadata = {
-  title: 'Seller Registration — NehnaX',
+  title: 'Seller Registration — Nehna',
 };
 
 export default function SellerRegisterPage() {

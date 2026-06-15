@@ -195,7 +195,7 @@ it('POST /businesses creates a business and upgrades customer to seller', async 
       ownerId: sellerId,
       name: 'Test Shop',
       ownerName: 'Seller Test',
-      description: 'Test Shop on NehnaX — connect with customers in Kampala.',
+      description: 'Test Shop on Nehna — connect with customers in Kampala.',
       category: 'Food',
       address: 'Kansanga',
       neighborhood: 'Kansanga',

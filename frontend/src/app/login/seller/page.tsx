@@ -2,7 +2,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb';
 import { SellerLoginView } from '@/features/auth/components/LoginViews';
 
 export const metadata = {
-  title: 'Seller Sign in — NehnaX',
+  title: 'Seller Sign in — Nehna',
 };
 
 export default function SellerLoginPage() {

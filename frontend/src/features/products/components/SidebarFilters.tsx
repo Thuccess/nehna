@@ -31,14 +31,16 @@ export default function SidebarFilters({
   const { language, t } = useLanguage();
 
   const categoryLabels: Record<string, string> = {
-    Food: t.catFood,
-    Groceries: t.catGroceries,
-    Housing: t.catHousing,
-    Jobs: t.catJobs,
     Electronics: t.catElectronics,
+    Schools: t.catSchools,
+    Travel: t.catTravel,
+    Rentals: t.catRentals,
+    Hotels: t.catHotels,
     Fashion: t.catFashion,
     Beauty: t.catBeauty,
     Services: t.catServices,
+    Jobs: t.catJobs,
+    Restaurants: t.catRestaurants,
   };
 
   const categories = [

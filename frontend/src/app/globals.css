@@ -8,7 +8,7 @@
   --font-display: var(--font-space-grotesk), sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
 
-  /* NehnaX logo palette */
+  /* Nehna logo palette */
   --color-nehnax-navy-50: #eef0f4;
   --color-nehnax-navy-100: #dce1e9;
   --color-nehnax-navy-200: #b9c3d3;
@@ -71,7 +71,7 @@
   --color-primary-600: var(--color-flag-blue-500);
   --color-primary-700: var(--color-flag-blue-700);
 
-  /* Remap sky → NehnaX logo blue */
+  /* Remap sky → Nehna logo blue */
   --color-sky-50: var(--color-flag-blue-50);
   --color-sky-100: var(--color-flag-blue-100);
   --color-sky-200: var(--color-flag-blue-200);
@@ -84,7 +84,7 @@
   --color-sky-900: var(--color-flag-blue-900);
   --color-sky-950: var(--color-flag-blue-900);
 
-  /* Remap emerald → NehnaX logo green */
+  /* Remap emerald → Nehna logo green */
   --color-emerald-50: var(--color-flag-green-50);
   --color-emerald-100: var(--color-flag-green-100);
   --color-emerald-200: var(--color-flag-green-200);
@@ -97,7 +97,7 @@
   --color-emerald-900: var(--color-flag-green-900);
   --color-emerald-950: var(--color-flag-green-900);
 
-  /* Remap amber → NehnaX logo gold/orange */
+  /* Remap amber → Nehna logo gold/orange */
   --color-amber-50: var(--color-flag-gold-50);
   --color-amber-100: var(--color-flag-gold-100);
   --color-amber-200: var(--color-flag-gold-200);

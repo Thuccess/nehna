@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 
 export const metadata = {
-  title: 'Seller Hub — NehnaX Marketplace',
+  title: 'Seller Hub — Nehna Marketplace',
 };
 
 export default function SellerPage() {

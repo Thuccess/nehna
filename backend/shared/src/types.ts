@@ -58,6 +58,8 @@ export interface Business {
   package: BusinessPackage;
   mapsUrl?: string;
   features?: string[];
+  galleryImages?: string[];
+  openingHours?: string;
   createdAt: string;
 }
 
@@ -145,4 +147,40 @@ export interface PresignResponse {
   uploadUrl: string;
   publicUrl: string;
   key: string;
+}
+
+export type NewsSection = 'eri_news' | 'uga_news';
+
+export interface NewsArticle {
+  id: string;
+  section: NewsSection;
+  title: string;
+  body: string;
+  imageUrl?: string;
+  authorId: string;
+  publishedAt: string;
+  createdAt: string;
+}
+
+export interface CommunityPost {
+  id: string;
+  businessId: string;
+  authorId: string;
+  title?: string;
+  body: string;
+  productId?: string;
+  imageUrl?: string;
+  createdAt: string;
+  businessName?: string;
+  businessLogo?: string;
+}
+
+export interface Review {
+  id: string;
+  businessId: string;
+  userId: string;
+  userName: string;
+  rating: number;
+  comment: string;
+  createdAt: string;
 }

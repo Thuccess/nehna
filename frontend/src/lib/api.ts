@@ -23,6 +23,13 @@ import type {
   SellerRegisterResponse,
   LoginInput,
   UpdateUserInput,
+  Review,
+  NewsArticle,
+  CommunityPost,
+  NewsArticleInput,
+  NewsArticleUpdate,
+  CommunityPostInput,
+  ReviewInput,
   User,
 } from '@adulis/shared';
 
@@ -125,6 +132,31 @@ export const api = {
     apiFetch<{ business: Business }>(`/businesses/${id}/approve`, { method: 'POST' }),
   suspendBusiness: (id: string) =>
     apiFetch<{ business: Business }>(`/businesses/${id}/suspend`, { method: 'POST' }),
+  listBusinessReviews: (id: string) =>
+    apiFetch<{
+      reviews: Review[];
+      stats: { average: number; count: number };
+    }>(`/businesses/${id}/reviews`),
+  createBusinessReview: (id: string, input: ReviewInput) =>
+    apiFetch<{ review: Review }>(`/businesses/${id}/reviews`, { method: 'POST', body: input }),
+
+  // Connect
+  listNews: (section?: string) =>
+    apiFetch<{ articles: NewsArticle[] }>('/connect/news', {
+      query: section ? { section } : undefined,
+    }),
+  getNewsArticle: (id: string) => apiFetch<{ article: NewsArticle }>(`/connect/news/${id}`),
+  createNewsArticle: (input: NewsArticleInput) =>
+    apiFetch<{ article: NewsArticle }>('/connect/news', { method: 'POST', body: input }),
+  updateNewsArticle: (id: string, input: NewsArticleUpdate) =>
+    apiFetch<{ article: NewsArticle }>(`/connect/news/${id}`, { method: 'PATCH', body: input }),
+  deleteNewsArticle: (id: string) =>
+    apiFetch<{ ok: true }>(`/connect/news/${id}`, { method: 'DELETE' }),
+  listCommunityPosts: () => apiFetch<{ posts: CommunityPost[] }>('/connect/posts'),
+  createCommunityPost: (input: CommunityPostInput) =>
+    apiFetch<{ post: CommunityPost }>('/connect/posts', { method: 'POST', body: input }),
+  deleteCommunityPost: (id: string) =>
+    apiFetch<{ ok: true }>(`/connect/posts/${id}`, { method: 'DELETE' }),
 
   // Products
   listProducts: (query?: {

@@ -48,7 +48,7 @@ function ResetPasswordForm() {
     <div className="max-w-md mx-auto bg-slate-50 border border-black/10 rounded-3xl shadow-2xl overflow-hidden">
       <div className="bg-white p-6 border-b border-black/10">
         <div className="flex justify-center mb-4">
-          <NehnaXLogo linkToHome className="max-w-[200px]" />
+          <NehnaXLogo linkToHome size="lg" />
         </div>
         <h1 className="text-xl font-serif font-black text-black">
           {language === 'en' ? 'Set new password' : 'ሕላገት ሓድስ'}

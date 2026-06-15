@@ -44,6 +44,8 @@ export function toBusiness(doc: WithMongoId<BusinessDoc>): Business {
     package: doc.package,
     mapsUrl: doc.mapsUrl ?? undefined,
     features: doc.features ?? [],
+    galleryImages: doc.galleryImages ?? [],
+    openingHours: doc.openingHours ?? undefined,
     createdAt: doc.createdAt,
   };
 }

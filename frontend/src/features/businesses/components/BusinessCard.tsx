@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { MapPin, Phone, ShoppingBag } from 'lucide-react';
+import { MapPin, MessageCircle, Phone, ShoppingBag } from 'lucide-react';
 import type { Business } from '@adulis/shared';
+import { formatTelUrl, formatWhatsAppUrl } from '@/lib/whatsapp';
 
 interface BusinessCardProps {
   biz: Business;
@@ -78,20 +79,29 @@ export default function BusinessCard({ biz, productCount, language }: BusinessCa
           </div>
         </div>
 
-        <div className="pt-4 border-t border-black/5 flex flex-col gap-2 sm:grid sm:grid-cols-2 sm:gap-2.5">
+        <div className="pt-4 border-t border-black/5 flex flex-col gap-2 sm:grid sm:grid-cols-3 sm:gap-2">
           <a
-            href={`tel:${biz.phone}`}
-            className="py-2.5 text-center bg-black/5 hover:bg-black/5 border border-black/15 hover:border-black/35 text-black rounded-2xl text-xs font-bold transition duration-300 flex items-center justify-center gap-2 cursor-pointer"
+            href={formatTelUrl(biz.phone)}
+            className="py-2.5 text-center bg-black/5 hover:bg-black/5 border border-black/15 text-black rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2"
           >
             <Phone className="h-3.5 w-3.5 text-black/50" />
             <span>{language === 'en' ? 'Call' : 'ደውል'}</span>
           </a>
+          <a
+            href={formatWhatsAppUrl(biz.whatsAppNumber, `Hello ${biz.name}`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="py-2.5 text-center bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2"
+          >
+            <MessageCircle className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">WhatsApp</span>
+          </a>
           <Link
             href={`/businesses/${biz.id}`}
-            className="py-2.5 text-center bg-flag-blue-50 hover:bg-flag-blue-100 border border-flag-blue-200 text-flag-blue-700 rounded-2xl text-xs font-bold transition duration-300 flex items-center justify-center gap-2 cursor-pointer"
+            className="py-2.5 text-center bg-flag-blue-50 hover:bg-flag-blue-100 border border-flag-blue-200 text-flag-blue-700 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2"
           >
             <ShoppingBag className="h-3.5 w-3.5" />
-            <span>{language === 'en' ? 'Shop on Nehna' : 'ኣብ Nehna ዕዳግ'}</span>
+            <span>{language === 'en' ? 'View shop' : 'ድኳን ርአ'}</span>
           </Link>
         </div>
       </div>

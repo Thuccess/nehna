@@ -16,7 +16,7 @@ import {
 
 async function seed(): Promise<void> {
   await connectMongo();
-  logger.info('Seeding NehnaX dataset...');
+  logger.info('Seeding Nehna dataset...');
 
   const adminPassword = process.env.ADMIN_SEED_PASSWORD ?? DEFAULT_ADMIN_SEED_PASSWORD;
 
@@ -58,7 +58,7 @@ async function seed(): Promise<void> {
         adminUrl: '/admin',
         note: 'Set ADMIN_SEED_PASSWORD in env to override default admin password',
       },
-      'NehnaX admin login (sign in at /login, then open /admin)',
+      'Nehna admin login (sign in at /login, then open /admin)',
     );
   }
 

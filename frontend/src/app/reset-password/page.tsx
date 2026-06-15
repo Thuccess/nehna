@@ -2,7 +2,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb';
 import ResetPasswordView from '@/features/auth/components/ResetPasswordView';
 
 export const metadata = {
-  title: 'Reset Password — NehnaX',
+  title: 'Reset Password — Nehna',
 };
 
 export default function ResetPasswordPage() {

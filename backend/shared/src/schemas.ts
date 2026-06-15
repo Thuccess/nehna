@@ -96,6 +96,8 @@ export const businessInputSchema = z.object({
   coverImage: z.string().url(),
   mapsUrl: z.string().url().optional(),
   features: z.array(z.string().min(1)).max(20).optional(),
+  galleryImages: z.array(z.string().url()).max(8).optional(),
+  openingHours: z.string().trim().max(500).optional(),
 });
 export type BusinessInput = z.infer<typeof businessInputSchema>;
 
@@ -174,3 +176,32 @@ export const presignInputSchema = z.object({
   filename: z.string().trim().min(1).max(200).optional(),
 });
 export type PresignInput = z.infer<typeof presignInputSchema>;
+
+export const newsSectionSchema = z.enum(['eri_news', 'uga_news']);
+
+export const newsArticleInputSchema = z.object({
+  section: newsSectionSchema,
+  title: z.string().trim().min(2).max(200),
+  body: z.string().trim().min(10).max(10000),
+  imageUrl: z.string().url().optional(),
+  publishedAt: z.string().trim().optional(),
+});
+export type NewsArticleInput = z.infer<typeof newsArticleInputSchema>;
+
+export const newsArticleUpdateSchema = newsArticleInputSchema.partial();
+export type NewsArticleUpdate = z.infer<typeof newsArticleUpdateSchema>;
+
+export const communityPostInputSchema = z.object({
+  businessId: z.string().trim().min(1),
+  title: z.string().trim().max(200).optional(),
+  body: z.string().trim().min(2).max(2000),
+  productId: z.string().trim().min(1).optional(),
+  imageUrl: z.string().url().optional(),
+});
+export type CommunityPostInput = z.infer<typeof communityPostInputSchema>;
+
+export const reviewInputSchema = z.object({
+  rating: z.number().int().min(1).max(5),
+  comment: z.string().trim().min(2).max(2000),
+});
+export type ReviewInput = z.infer<typeof reviewInputSchema>;

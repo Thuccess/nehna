@@ -2,7 +2,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb';
 import LoginChoiceView from '@/features/auth/components/LoginChoiceView';
 
 export const metadata = {
-  title: 'Sign in — NehnaX',
+  title: 'Sign in — Nehna',
 };
 
 export default function LoginPage() {

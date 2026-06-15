@@ -2,7 +2,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb';
 import SellerView from '@/features/seller/components/SellerView';
 
 export const metadata = {
-  title: 'Seller Products — NehnaX Marketplace',
+  title: 'Seller Products — Nehna Marketplace',
 };
 
 export default function SellerProductsPage() {

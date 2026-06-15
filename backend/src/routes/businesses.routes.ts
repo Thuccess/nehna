@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import { businessOnboardingInputSchema, businessUpdateSchema } from '@adulis/shared';
+import { businessOnboardingInputSchema, businessUpdateSchema, reviewInputSchema } from '@adulis/shared';
 import { businessController } from '../controllers/business.controller.js';
+import { reviewController } from '../controllers/review.controller.js';
 import { optionalAuth, requireAuth, requireRole } from '../middlewares/auth.js';
 import { requireActiveUser } from '../middlewares/requireActiveUser.js';
 import { asyncHandler } from '../middlewares/asyncHandler.js';
@@ -17,6 +18,17 @@ router.get(
 );
 
 router.get('/:id', asyncHandler(businessController.getById));
+
+router.get('/:id/reviews', asyncHandler(reviewController.list));
+
+router.post(
+  '/:id/reviews',
+  requireAuth,
+  requireActiveUser,
+  requireRole('customer', 'admin'),
+  validate(reviewInputSchema),
+  asyncHandler(reviewController.create),
+);
 
 router.post(
   '/',

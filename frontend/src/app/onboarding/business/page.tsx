@@ -2,7 +2,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb';
 import SellerOnboardingView from '@/features/auth/components/SellerOnboardingView';
 
 export const metadata = {
-  title: 'Register Business — NehnaX',
+  title: 'Register Business — Nehna',
 };
 
 export default function BusinessOnboardingPage() {

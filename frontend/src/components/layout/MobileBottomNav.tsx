@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Home, Menu, ShoppingBag, Store } from 'lucide-react';
+import { Heart, Home, Menu, MessageCircle, ShoppingBag, Store } from 'lucide-react';
 import { useLanguage } from '@/providers/LanguageProvider';
 import { useFavorites } from '@/lib/queries';
 import { useMobileMore } from '@/providers/MobileMoreProvider';
@@ -21,6 +21,7 @@ export default function MobileBottomNav() {
   }> = [
     { href: '/', label: t.navHome, Icon: Home },
     { href: '/businesses', label: t.navBusinesses, Icon: Store },
+    { href: '/connect', label: t.navConnect, Icon: MessageCircle },
     { href: '/products', label: language === 'en' ? 'Shop' : 'ዕዳጋ', Icon: ShoppingBag },
     {
       href: '/favorites',

@@ -111,7 +111,7 @@ export default function HomeHero({
           <p className="max-w-xl text-sm leading-relaxed text-black/65 md:text-base">
             {language === 'en'
               ? 'Browse verified habesha cafes, grocery hubs, fashion tailors, salons, and housing. Add to cart and message sellers on Nehna — zero commissions, zero hassle.'
-              : 'ብቕዓት ዘለዎም NehnaX ድኳናት ኣብ ካርት ወስኽ ኣብ Nehna ርክብ ግበር።'}
+              : 'ብቕዓት ዘለዎም Nehna ድኳናት ኣብ ካርት ወስኽ ኣብ Nehna ርክብ ግበር።'}
           </p>
 
           {/* Mobile visual strip */}
@@ -169,15 +169,28 @@ export default function HomeHero({
                 onSelectCategory={handleCategorySelect}
               />
             )}
-          </div>
 
-          <div className="flex flex-wrap items-center gap-3">
-            <ButtonLink href="/products" variant="outline" size="sm" icon={ArrowRight} iconPosition="right">
-              {t.navProducts}
-            </ButtonLink>
-            <ButtonLink href="/register/seller" variant="outline" size="sm" icon={Store} className="border-flag-green-200 bg-flag-green-50 text-flag-green-700 hover:bg-flag-green-100">
-              {t.joinAsSeller}
-            </ButtonLink>
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <ButtonLink
+                href="/products"
+                variant="ghost"
+                size="sm"
+                icon={ArrowRight}
+                iconPosition="right"
+                className="text-black/70 font-bold"
+              >
+                {t.seeAllCategories}
+              </ButtonLink>
+              <ButtonLink
+                href="/register/seller"
+                variant="primary"
+                size="lg"
+                icon={Store}
+                className="shadow-lg shadow-flag-green-500/20"
+              >
+                {t.addYourBusiness}
+              </ButtonLink>
+            </div>
           </div>
 
           {/* Trust stats strip */}

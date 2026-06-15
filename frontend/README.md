@@ -1,4 +1,4 @@
-# NehnaX Web (frontend)
+# Nehna Web (frontend)
 
 Next.js 15 App Router marketplace UI.
 

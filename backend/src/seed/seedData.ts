@@ -15,7 +15,7 @@ export const DEFAULT_ADMIN_SEED_PASSWORD = 'NehnaX-Admin-2026!';
 export const seedUsers: Array<User & { passwordPlain: string; seedStatus?: UserStatus }> = [
   {
     id: 'user-admin-nehnax',
-    name: 'NehnaX Administrator',
+    name: 'Nehna Administrator',
     email: 'admin@nehnax.app',
     phone: '+256700000001',
     role: 'admin',
@@ -85,7 +85,7 @@ export const seedBusinesses: Business[] = [
     ownerName: 'Daniel Mebrahtu',
     description:
       'The home of premium traditional Eritrean cuisine in Kansanga. We prepare healthy recipes including fresh sourdough Injera, Zigni, Shiro, and hand-roasted organic coffee. Visited and loved by the Eritrean student community.',
-    category: 'Food',
+    category: 'Restaurants',
     address: 'Kansanga Stage, Ggaba Road, opposite Kampala International University (KIU)',
     neighborhood: 'Kansanga',
     phone: '+256755432109',
@@ -106,7 +106,7 @@ export const seedBusinesses: Business[] = [
     ownerName: 'Sara Mohammed',
     description:
       'Your absolute choice for high-quality spices imported straight from Asmara. We source raw spice components: authentic Berbere, Shiro powder, Ge\'ez incense, traditional dry bread, clay coffee pots (Jebena), and raw green coffee beans.',
-    category: 'Groceries',
+    category: 'Restaurants',
     address: 'Kabalagala-Bunga Branch, near Soya Stage',
     neighborhood: 'Soya',
     phone: '+256772987654',
@@ -153,7 +153,7 @@ export const seedBusinesses: Business[] = [
     ownerName: 'Samuel G.',
     description:
       'Sizable one-bedroom and studio flat rooms highly recommended and rented by East African students in Kampala. Secure perimeter wall, stable water flow, fast Wi-Fi grid access, and neat quiet neighborhood environment.',
-    category: 'Housing',
+    category: 'Rentals',
     address: 'Konge Stage, near Kansanga border lanes',
     neighborhood: 'Konge',
     phone: '+256788111222',
@@ -220,7 +220,7 @@ export const seedProducts: Product[] = [
       'Experience the complete traditional coffee ceremony. Features three rounds (Awol, Bereka, Dereja), fresh popcorn, and traditional frankincense incense for the ideal authentic atmosphere.',
     image:
       'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&q=80&w=400',
-    category: 'Food',
+    category: 'Restaurants',
     isAvailable: true,
     createdAt: '2026-05-01',
     isSponsored: true,
@@ -234,7 +234,7 @@ export const seedProducts: Product[] = [
       'Freshly steamed authentic teff-flour sourdough Injera, served with beef zigni (beef stew simmered in original Berbere spiced ghee), delicious buttery Shiro, lentils, and salad garnish. Serves 1-2 people.',
     image:
       'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=400',
-    category: 'Food',
+    category: 'Restaurants',
     isAvailable: true,
     createdAt: '2026-05-02',
   },
@@ -247,7 +247,7 @@ export const seedProducts: Product[] = [
       'Finely ground premium chili, fenugreek, garlic, ginger, basil, and secret home spices imported directly from Eritrea. Excellent for cooking authentic Habesha stews and Zigni.',
     image:
       'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=400',
-    category: 'Groceries',
+    category: 'Restaurants',
     isAvailable: true,
     createdAt: '2026-05-15',
     isSponsored: true,
@@ -261,7 +261,7 @@ export const seedProducts: Product[] = [
       'Traditional Eritrean clay coffee makers, handcrafted in Gash Barka region and shipped to Uganda. Designed specifically for simmering coffee on charcoal.',
     image:
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=400',
-    category: 'Groceries',
+    category: 'Restaurants',
     isAvailable: true,
     createdAt: '2026-05-18',
   },
@@ -301,7 +301,7 @@ export const seedProducts: Product[] = [
       'A neat studio apartment with self-contained bathroom, separate kitchenette counter, prepaid power check (yaka), secure water layout on 1st level. 5 minutes walk from Kansanga central traffic lane.',
     image:
       'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=400',
-    category: 'Housing',
+    category: 'Rentals',
     isAvailable: true,
     createdAt: '2026-06-10',
   },
@@ -314,7 +314,7 @@ export const seedProducts: Product[] = [
       'Prepared powder made of ground high-quality chickpeas, split peas, red pepper flavor, onions, cardamom, and garlic. Simple and fast cooking.',
     image:
       'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&q=80&w=400',
-    category: 'Groceries',
+    category: 'Restaurants',
     isAvailable: false,
     createdAt: '2026-05-22',
   },

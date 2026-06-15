@@ -24,7 +24,7 @@ export default function MyInquiriesView() {
         </h2>
         <p className="text-xs text-black/60 mt-1">
           {language === 'en'
-            ? 'A history of every message you sent to a seller through NehnaX.'
+            ? 'A history of every message you sent to a seller through Nehna.'
             : 'ናብ ሸቓጦ ዝለኣኽካዮም ኩሎም መልእኽትታት።'}
         </p>
       </div>

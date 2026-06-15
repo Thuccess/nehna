@@ -2,7 +2,7 @@ import type { Language } from '@adulis/shared';
 
 export const translations = {
   en: {
-    appName: 'NehnaX',
+    appName: 'Nehna',
     tagline: 'Buy. Sell. Connect.',
     subTagline:
       'Find authentic Eritrean food, groceries, housing, jobs, and trusted businesses in Kansanga, Kabalagala, Bunga, and surroundings.',
@@ -11,20 +11,26 @@ export const translations = {
     navHome: 'Home',
     navBusinesses: 'Directory',
     navProducts: 'Marketplace',
+    navConnect: 'Connect',
     navSeller: 'Seller',
     navAdmin: 'Admin',
     navFavorites: 'Favorites',
     navCart: 'Cart',
     navDashboard: 'Dashboard',
 
-    catFood: 'Food & Cafes',
-    catGroceries: 'Groceries',
-    catHousing: 'Housing & Rooms',
-    catJobs: 'Jobs & Gigs',
     catElectronics: 'Electronics',
+    catSchools: 'Schools',
+    catTravel: 'Travel',
+    catRentals: 'Rentals & Apartments',
+    catHotels: 'Hotels',
     catFashion: 'Fashion & Wear',
     catBeauty: 'Beauty & Salons',
     catServices: 'Professional Services',
+    catJobs: 'Jobs & Gigs',
+    catRestaurants: 'Restaurants',
+
+    seeAllCategories: 'See all Categories…',
+    addYourBusiness: 'Add Your Business',
 
     searchPlaceholder: 'Search for Injera, Apartments, Phones, Barbers...',
     locationSelector: 'Select Neighborhood',
@@ -116,7 +122,7 @@ export const translations = {
     placeholderMapPin: 'Simulated Google Maps Location Pin in ',
   },
   ti: {
-    appName: 'NehnaX',
+    appName: 'Nehna',
     tagline: 'ዕዳግ። ሸያጥ። ርክብ።',
     subTagline:
       'ኣብ ካንሳንጋ፣ ካባላጋላ፣ ቡንጋ፣ ሶያ፣ ኮንገ፣ ቡዚጋን ከባቢኡን ንቑጽ እንጀራ፣ ገዛውቲ፣ ስራሕ ከምኡውን ዝተኣመኑ ኤርትራውያን ትካላት ዝረኽቡሉ መድረኽ።',
@@ -125,20 +131,26 @@ export const translations = {
     navHome: 'መበገሲ ገጽ',
     navBusinesses: 'ትካላትና',
     navProducts: 'ዕዳጋ',
+    navConnect: 'ርክብ',
     navSeller: 'ነጋዲ',
     navAdmin: 'ምሕደራ',
     navFavorites: 'የተፈተዉ',
     navCart: 'ካርት',
     navDashboard: 'ናተይ ገጽ',
 
-    catFood: 'መግቢን ካፌታትን',
-    catGroceries: 'ድኳን (ኣቑሑት መግቢ)',
-    catHousing: 'ገዛውቲ ንኻራ',
-    catJobs: 'ረኽቢ ስራሕ',
     catElectronics: 'ኤሌክትሮኒክስ',
+    catSchools: 'ዓለም ቤት',
+    catTravel: 'ጉዕዞ',
+    catRentals: 'ኪራይ ገዛ',
+    catHotels: 'ሆቴላት',
     catFashion: 'ክዳውንትን ፋሽንን',
     catBeauty: 'ሳሎን ጽባቐ',
     catServices: 'ክኢላታት ኣገልግሎት',
+    catJobs: 'ረኽቢ ስራሕ',
+    catRestaurants: 'ምግቢ ወዘተ',
+
+    seeAllCategories: 'ኩሉ ክፍሊ…',
+    addYourBusiness: 'ንግዲኻ ወስኽ',
 
     searchPlaceholder: 'እንጀራ፣ ክራይ ገዛ፣ ተሌፎን፣ ጸጉሪ ድለዩ...',
     locationSelector: 'ከባቢ ቦታ ምረጽ',
